@@ -17,8 +17,8 @@ Fork this repository into your own GitHub account and provide the URL in order t
 In this step you are required to create a database schema for storing weather information. You may select a database management system of your choice. Define a schema with the following tables and save the statements needed into a text file.
 
 ```
-sensor = (
-  sensor_id int primary key,
+stations = (
+  station_id int primary key,
   name varchar,
   latitude double,
   longitude double,
@@ -41,7 +41,7 @@ observations = (
 )
 ```
 
-Table *sensors* holds the name, geographic location (latitude+longitude) and elevation of all the weather sensors we have in our application. Table *variables* holds all the climate variables (for now, just maximum temperature) for which we will store observed data. Finally, table *observations* stores all the observed data for each *station* and *variable*. Each observation has a timestamp that uniquely identifies and observation for any given station and variable. All the observations have a status flag for quality-control purposes (N = not controlled, A = anomaly, V = valid).
+Table *stations* holds the name, geographic location (latitude+longitude) and elevation of all the weather sensors we have in our application. Table *variables* holds all the climate variables (for now, just maximum temperature) for which we will store observed data. Finally, table *observations* stores all the observed data for each *station* and *variable*. Each observation has a timestamp that uniquely identifies and observation for any given station and variable. All the observations have a status flag for quality-control purposes (N = not controlled, A = anomaly, V = valid).
 
 **Minimal solution**: Create a relational schema using a RDBMS of your choice (MySQL, PostgreSQL, etc.). Provide all the SQL statements needed to create the schema.
 
