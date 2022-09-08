@@ -45,7 +45,7 @@ Table *stations* holds the name, geographic location (latitude/longitude) and el
 
 **Minimal solution**: Create a relational schema using a RDBMS of your choice (MySQL, PostgreSQL, etc.). Provide all the SQL statements needed to create the schema (if you want to use a NoSQL database, go ahead!).
 
-**Preferred solution**: Use AstraDB, a cloud-native implementation of Apache Cassandra. You may register for free at https://astra.datastax.com/register (you will get a $25 credit, more that enough to run this task). If you choose this option, explain all the steps needed to create the schema.
+**Preferred solution**: Use AstraDB, a cloud-native implementation of Apache Cassandra. You may register for free at https://astra.datastax.com/register (you will get a $25 credit, more that enough to complete this task). If you choose this option, explain all the steps needed to create the schema.
 
 # 3. Collect the information for populating your database
 
