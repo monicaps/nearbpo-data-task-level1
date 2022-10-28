@@ -52,3 +52,7 @@
 body {
   min-height: 75rem;
 }
+
+button.btn.btn-outline-secondary{
+  margin-right: 10px;
+}

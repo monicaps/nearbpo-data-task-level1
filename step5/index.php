@@ -59,7 +59,6 @@
 					} else {
 						echo "<tr><th scope='row'></th><td colspan='4'>No hay registros disponibles</td></tr>";
 					}
-
 				?>
 			</tbody>
 		</table>
