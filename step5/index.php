@@ -16,9 +16,9 @@
     		</button>
     		<div class="collapse navbar-collapse" id="navbarCollapse">
       			<ul class="navbar-nav me-auto mb-2 mb-md-0">
-        			<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="php/observations.php">Observations</a>
-        			</li>
+        			<!--<li class="nav-item">
+          				<a class="nav-link active" aria-current="page" href="#">Observations</a>
+        			</li>-->
       			</ul>
     		</div>
   		</div>
@@ -36,6 +36,7 @@
 					<th scope="col">Latitude</th>
 					<th scope="col">Longitude</th>
 					<th scope="col">Elevation</th>
+					<th scope="col">Years</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -47,14 +48,25 @@
 
 					if ($bdResult->num_rows>0) {
 						while($row= $bdResult->fetch_assoc()) {
-								$cell = "<tr>".
-								"<th scope='row'>".$row['station_id']."</th>".
-								"<td>".$row['name']."</td>".
-      							"<td>".$row['latitude']."</td>".
-      							"<td>".$row['longitude']."</td>".
-      							"<td>".$row['elevation']."</td>".
-							"</tr>";
-							echo $cell;
+							$station=$row['station_id'];
+							$queryYears="SELECT DISTINCT YEAR(o.observation_date) AS agno FROM observations AS o INNER JOIN stations AS s ON o.sensor_id=s.station_id WHERE s.station_id='$station'";
+
+							$bdResultYears = mysqli_query($conectar,$queryYears);
+
+							echo $cell = "<tr>".
+									"<th scope='row'>".$row['station_id']."</th>".
+									"<td>".$row['name']."</td>".
+      								"<td>".$row['latitude']."</td>".
+      								"<td>".$row['longitude']."</td>".
+      								"<td>".$row['elevation']."</td>".
+      								"<td>".
+      									"<div class='btn-group' role='group' aria-label='Basic example'>";
+											while($rowYear= $bdResultYears->fetch_assoc()){
+  												echo $buttons="<a href='php/observations.php' class='btn btn-outline-info' onclick='assignYear(".$rowYear['agno'].",".$row['station_id'].")'>".$rowYear['agno']."</a>";
+											}
+							echo $footer=	"</div>".
+      								"</td>".
+								"</tr>";
 						}
 					} else {
 						echo "<tr><th scope='row'></th><td colspan='4'>No hay registros disponibles</td></tr>";
@@ -65,6 +77,8 @@
 	</main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/assigns.js"></script>
 
 </body>
 </html>

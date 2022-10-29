@@ -1,9 +1,9 @@
 <?php
 	require 'conexion.php';
-	$date = $row['date'];
-	$sensor = 1;
+	$station=$_POST['station_id'];
+	$date=$_POST['observation_date'];
 
-	$sql = "DELETE FROM observations where observation_date= $date" AND sensor_id=$sensor;
+	$sql = "DELETE FROM observations where observation_date='$date' AND sensor_id='$station'";
 	$result=mysqli_query($conectar,$sql);
 
     if(!$result){
